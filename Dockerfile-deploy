@@ -1,0 +1,11 @@
+FROM node:5
+
+COPY wisdota-shared-code /shared-code
+WORKDIR /shared-code
+RUN npm install
+
+COPY wisdota-scheduler/src /source
+WORKDIR /source
+RUN npm install
+
+CMD ["node", "schedule-server.js"]
